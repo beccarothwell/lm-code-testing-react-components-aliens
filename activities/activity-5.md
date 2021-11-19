@@ -41,8 +41,8 @@ Remember `e.target.value` contains the current value of the input, which we can 
 
 One way to do this is to add a validation function in our component. In pseudocode this might look a bit like this:
 
-`
-		const someComponent = ({...props}) => {
+```
+	const someComponent = ({...props}) => {
 
 		const [ errorMessage, setErrorMessage ] = useState('');
 
@@ -61,7 +61,7 @@ One way to do this is to add a validation function in our component. In pseudoco
 		);
 
 		}
-`
+```
 
 -   Take a moment to understand the pseudocode above before reading on.
 
