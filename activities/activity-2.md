@@ -2,7 +2,9 @@
 
 ![Sample Form](../public/sample-form.png)
 
-Take a moment to consider how you might design the rest of the form in code. Just from looking at the form, what components do you think you'll need?
+- Take a moment to consider how you might design the rest of the form in code. 
+
+🤔  Just from looking at the form, what components do you think you'll need?
 
 ## Before reading on, think about what components you could create to build this form
 
