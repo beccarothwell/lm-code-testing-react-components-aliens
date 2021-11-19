@@ -18,7 +18,9 @@ According to the aliens, each field should have a `<label>` and a corresponding 
 
 As a refresher for inputs-with-state, for each input you'll need something like:
 
-`<input type='text' value={myStateVariable} onChange='{doSomethingHereToUpdateState} />`
+```JavaScript
+<input type='text' value={myStateVariable} onChange='{doSomethingHereToUpdateState} />
+```
 
 (Of course, not all of the required fields are `<input>` tags so you may need to remind yourself of how `<select>` and `<textarea>` work - luckily, they're very similar to `<input>`)
 

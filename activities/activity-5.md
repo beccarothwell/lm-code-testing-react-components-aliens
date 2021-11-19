@@ -30,7 +30,9 @@ The smart place seems like our `onChange` handlers. We can intercept them and ad
 
 Let's start with a text input, e.g. `SpeciesName` or `PlanetName`. Up to now, each component probably includes something like this:
 
-`<input type="text" value={someValueFromProps} onChange={someFunctionFromProps}/>`
+```JavaScript
+<input type="text" value={someValueFromProps} onChange={someFunctionFromProps}/>
+```
 
 But we can intercept that function to add extra logic and then call the original function
 
@@ -41,7 +43,7 @@ Remember `e.target.value` contains the current value of the input, which we can 
 
 One way to do this is to add a validation function in our component. In pseudocode this might look a bit like this:
 
-```
+```JavaScript
 	const someComponent = ({...props}) => {
 
 		const [ errorMessage, setErrorMessage ] = useState('');

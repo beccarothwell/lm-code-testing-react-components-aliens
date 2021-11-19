@@ -4,7 +4,7 @@ Our components already have `.test.js` files. Now we just need to make sure we'r
 
 Remember how to pass props to a component in tests? Here's an example you've seen earlier:
 
-`
+```JavaScript
 	it(`Given the required props,
 		When the component is rendered,
 		Then the appointment description should be present`, () => {
@@ -23,7 +23,7 @@ Remember how to pass props to a component in tests? Here's an example you've see
     		screen.getByText('A very special appointment')
     	).toBeInTheDocument();
     });
-`
+```
 
 You can write tests for each component to ensure that:
 
