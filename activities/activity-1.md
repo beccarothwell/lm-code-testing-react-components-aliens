@@ -20,7 +20,15 @@ Before we get into it, the aliens left a short note for you:
 
 ## How To Produce the W-12-M Form : A Guide for Inferior Species
 
-👽 Dear developer: As superior beings, **we do not care about "visuals"**. If you want to waste time on making your form look "pretty" then that is up to you. A basic looking form is sufficient, as long as it works correctly. Love, The Aliens.
+👽 
+
+Dear developer,
+
+As superior beings, **we do not care about "visuals"**. If you want to waste time on making your form look "pretty" then that is up to you. 
+
+A basic looking form is susfficient, as long as it works correctly.
+
+Love, The Aliens 💚
 
 ---
 
