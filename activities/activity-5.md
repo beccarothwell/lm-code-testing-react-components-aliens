@@ -14,25 +14,35 @@ But the aliens are very finicky about their form and insist that each field conf
 
 - **Reason for sparing**: Must be between 17 and 153 characters. 
 
-It's unclear how a species is supposed to make a case in just 17 characters, but I suppose those are the rules 🙃
+It's unclear how a species is supposed to make a case in just 17 characters, but the client is always right  🙃
+
+(even if they are aliens hellbent on the destruction of all things)
 
 ## Step 1 - Add validation rules
 
-Have a think about where is the best place to validate the data.
+🤔  Where is the best place to validate the data?
 
-Remember you're going to have to write tests for each component's validation messages, so it looks like we'll have to build that logic into each component somehow.
+Remember you're going to have to write tests for each component's validation messages, so ideally we'll include that logic in each component somehow.
 
-The smart place seems like our `onChange` handlers. We can intercept them and add some extra logic. Let's start with a text input. Up to now, they each look something like this:
+---
 
-`<input type="text" onChange={someFunctionFromProps}/>`
+The smart place seems like our `onChange` handlers. We can intercept them and add the extra logic we need.
+
+Let's start with a text input, e.g. `SpeciesName` or `PlanetName`. Up to now, each component probably includes something like this:
+
+`<input type="text" value={someValueFromProps} onChange={someFunctionFromProps}/>`
 
 But we can intercept that function to add extra logic and then call the original function
 
-`<input type="text" onChange={(e) => { // extra logic goes here someFunctionFromProps(e); }}/>`
+`<input type="text" onChange={(e) => { // extra logic goes here 
+someFunctionFromProps(e); }}/>`
 
-We know that `e.value` is the current value of the input. So we can write a validation function elsewhere in our component and call it here. In pseudocode this might look a bit like this:
+Remember `e.target.value` contains the current value of the input, which we can validate here. 
 
-`const someComponent = ({...props}) => {
+One way to do this is to add a validation function in our component. In pseudocode this might look a bit like this:
+
+`
+	const someComponent = ({...props}) => {
 
     const [ errorMessage, setErrorMessage ] = useState('');
 
@@ -50,19 +60,20 @@ We know that `e.value` is the current value of the input. So we can write a vali
     		}}/>
     );
 
-}`
+	}
+s`
 
--   Take a moment to understand the pseudocode flow above.
+-   Take a moment to understand the pseudocode above before reading on.
 
-We're still telling the Form component about any updates, but we're also getting each component to check the value entered each time it changes. We're using empty string as a signal that there's no errors.
+💡  We're still using the handler passed to us from the form component to inform it about any updates, but we're also getting each component to check the value entered each time it changes. And we're using empty string as a signal that there's no errors.
 
--   Add an `<ErrorMessage/>` component to each field. This should take `errorMessage` from the state as a prop, and display it in red next to the input field.
+-   Add an `<ErrorMessage/>` component to each field. This should take `errorMessage` from the state as a prop, and its job is to display it in red next to the input field if there's a message, or to display nothing if not.
 
 -   Use this pattern to add a `validate` function to each field using the rules the aliens gave us. 👾
 
 -   Each field should now display a red error message if invalid data is entered.
 
-😭 STRUGGLING? Check out [Activity 5 Hints](./activity-5-hints.md) for some extra help with the `<SpeciesName/>` field as an example.
+😭  Getting lost? Check out [Activity 5 Hints](./activity-5-hints.md) for some extra help with one field which should get you going again.
 
 We're nearly done!
 

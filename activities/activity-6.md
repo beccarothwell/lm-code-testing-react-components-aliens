@@ -2,26 +2,28 @@
 
 Our components already have `.test.js` files. Now we just need to make sure we're also testing the validation logic too.
 
-Remember how to pass props to a component in tests? Here's an example from earlier:
+Remember how to pass props to a component in tests? Here's an example you've seen earlier:
 
-`it(`Given the required props,
-When the component is rendered,
-Then the appointment description should be present`, () => {
-const requiredProps = {
-id: 1,
-name: 'Harriet',
-description: 'A very special appointment',
-date: '3 Nov',
-confirmed: false,
-onConfirmed: () => {},
-};
+`
+	it(`Given the required props,
+		When the component is rendered,
+		Then the appointment description should be present`, () => {
+		const requiredProps = {
+		id: 1,
+		name: 'Harriet',
+		description: 'A very special appointment',
+		date: '3 Nov',
+		confirmed: false,
+		onConfirmed: () => {},
+		};
 
     	render(<Appointment {...requiredProps} />);
 
     	expect(
     		screen.getByText('A very special appointment')
     	).toBeInTheDocument();
-    });`
+    });
+`
 
 You can write tests for each component to ensure that:
 

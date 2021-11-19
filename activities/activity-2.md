@@ -4,7 +4,7 @@
 
 Take a moment to consider how you might design the rest of the form in code. Just from looking at the form, what components do you think you'll need?
 
-** --- Before reading on, think about what components you could create to build this form --- **
+## Before reading on, think about what components you could create to build this form
 
 There's no right or wrong answer here. As usual, design involves making tradeoffs between different advantages and disadvantages.
 
@@ -12,7 +12,7 @@ For example, you might decide to create a separate component for each form input
 
 On the other hand, you could aim to create a generic `<TextInput/>` component which you can reuse for the different fields. However, you'll have to figure out a way to give each component different validation logic and labels AND a way to write tests which test the validation logic in a way that doesn't involve repeating too much code.
 
-👉 It's going to be easier for this particular project if you make separate components for each field, like `<SpeciesName/>`, `<PlanetName/>` and `<NumberOfBeings/>`, etc. (However, the aliens have provided an extension challenge at the end to make this form more generic, so maybe have that in mind as you go.)
+👉  It's going to be easier for this particular project if you make separate components for each field, like `<SpeciesName/>`, `<PlanetName/>` and `<NumberOfBeings/>`, etc. (However, the aliens have provided an extension challenge at the end to make this form more generic, so maybe have that in mind as you go.)
 
 What about the validation messages? They could be a separate, shared component that each input component calls with a particular error message. Or they could be part of the input components themselves - this would involve more repetition, but might be easier to get started with.
 

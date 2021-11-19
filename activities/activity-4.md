@@ -4,7 +4,7 @@ Oh yeah, this was all supposed to be about testing! After all, it's crucial for 
 
 -   For each component file you have created, add a corresponding `.test.js` file
 
-💡 It may seem silly to test a component that just displays text, e.g. if you made a component like `<label>Some label</label>`. And it kinda is silly! But checking that every component renders can still be useful because someone else may come along and add functionality to that component later which breaks it. Your silly test might catch that and prevent them from destroying the Earth.
+💡  It may seem silly to test a component that just displays text, e.g. if you made a component like `<label>Some label</label>`. And it kinda is silly! But checking that every component renders can still be useful because someone else may come along and add functionality to that component later which breaks it. Your silly test might catch that and prevent them from destroying the Earth.
 
 -   Populate your `.test.js` files with sensible tests for your components
 
@@ -19,4 +19,4 @@ Perhaps you want to test things like:
 
 -   Make sure all your tests pass.
 
-Time to add the final touches in [Activity 5](./activity-5.md) 💃🕺
+Time to add the final touches in [Activity 5](./activity-5.md)  💃  🕺
