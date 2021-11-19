@@ -44,24 +44,24 @@ One way to do this is to add a validation function in our component. In pseudoco
 `
 	const someComponent = ({...props}) => {
 
-    const [ errorMessage, setErrorMessage ] = useState('');
+		const [ errorMessage, setErrorMessage ] = useState('');
 
-    const validate = (value) => {
-    	// perform validation
-    	// return a suitable error message, or '' if no errors
-    }
+		const validate = (value) => {
+			// perform validation
+			// return a suitable error message, or '' if no errors
+		}
 
-    return(
-    	// rest of component here
-    	<input type="text" onChange={(e) => {
-    		const errorMessage = validate(e.target.value);
-    		setErrorMessage(errorMessage);
-    		someFunctionFromProps(e);
-    		}}/>
-    );
+		return(
+			// rest of component here
+			<input type="text" onChange={(e) => {
+				const errorMessage = validate(e.target.value);
+				setErrorMessage(errorMessage);
+				someFunctionFromProps(e);
+				}}/>
+		);
 
-	}
-s`
+		}
+`
 
 -   Take a moment to understand the pseudocode above before reading on.
 
