@@ -25,13 +25,10 @@ Remember how to pass props to a component in tests? Here's an example you've see
     });
 ```
 
-You can write tests for each component to ensure that:
+Your task now is to:
 
-1. It displays NO error message for a valid entry
-2. It displays a suitable error message if a rule is broken: e.g. "No numeric characters" (or whatever error messages you choose)
-
--   Add a test to each input component to test for no error message in the event of valid data
--   Add (multiple if necessary) tests to each input component to test the validation logic for each type of rule break
+-   Add a test to each input component to test for NO error message when valid data is entered
+-   Add (multiple if necessary) tests to each input component to test that the right error message is shown for each type of rule break
 
 Reminder of the validation rules:
 
@@ -45,6 +42,7 @@ Reminder of the validation rules:
 
 - **Reason for sparing**: Must be between 17 and 153 characters. 
 
+- Write all of your tests and check they work for the above rules!
 
 Now if you run `npm test` you should get confirmation that all of your components are validating correctly in all possible circumstances. The Earth is saved! 🌍💃🕺🥳 Have a well-deserved break. ☕
 
