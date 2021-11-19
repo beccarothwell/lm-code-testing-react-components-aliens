@@ -27,7 +27,7 @@ Let's see if they've left us any tests.
 
 ** Run `npm test` and look at the output **
 
-![Sample Test Output](./public/sample-test-output.jpg?raw=true)
+![Sample Test Output](../public/sample-test-output.jpg?raw=true)
 
 Phew. These aliens might be about to destroy the Earth, but at least they've written tests for all their React components, so they're not _totally_ horrible!
 
