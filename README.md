@@ -4,6 +4,8 @@ Terrible news! Aliens have invaded the Earth. 👽👾
 
 Luckily, their species is _incredibly_ bureaucratic, and they've promised to spare the Earth if we can submit form W-12-M without making a single mistake. You've been chosen for your skills at testing React components to ensure we cannot get it wrong.
 
+![Sample Form](./public/sample-form.png)
+
 Let's save humanity. 🌍
 
 ## How to Get Started
