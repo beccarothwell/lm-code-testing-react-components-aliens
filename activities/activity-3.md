@@ -34,10 +34,10 @@ As a refresher for inputs-with-state, for each input you'll need something like:
 
 ## Step 2 - Add a submit button
 
-Lastly your form will need to submit. 
+Lastly your form will need to submit. In the final product we'd probably want to send the data to a server, but we can just use our submit button to check that all of our components are working correctly.
 
-- For now, just hook the button up with a click handler that logs to the console that it has been submitted.
+- For now, hook the button up with a click handler which logs to the console all the data entered to the form when you press submit.
 
-🤔  Can you get the button to log all the entered values in the console on submit? If you've designed the form carefully then this should just be a couple of lines of code!
+- (Optional) Rather than logging to the console, if you prefer you could add a new component beneath the form which displays the entered form data on the page when you press submit.
 
-Once you're happy you've built a basic form, let's move onto [Activity 4](./activity-4.md).
+Once you're happy you've built a basic form and hooked up some kind of submit function, let's move onto [Activity 4](./activity-4.md).
