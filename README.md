@@ -20,6 +20,14 @@ Let's save humanity.
 
 🌍 🌍 🌍
 
+## Useful Links
+
+You might find some of the documentation helpful in writing your tests:
+
+![Testing Library Cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet/)
+![Jest-DOM matchers](https://github.com/testing-library/jest-dom)
+![Jest Mock functions](https://jestjs.io/docs/mock-functions)
+
 ## How to Get Started
 
 This repo contains the beginnings of an app, based on create-react-app.
