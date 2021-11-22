@@ -24,9 +24,9 @@ Let's save humanity.
 
 You might find some of the documentation helpful in writing your tests:
 
-![Testing Library Cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet/)
-![Jest-DOM matchers](https://github.com/testing-library/jest-dom)
-![Jest Mock functions](https://jestjs.io/docs/mock-functions)
+[Testing Library Cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet/)
+[Jest-DOM matchers](https://github.com/testing-library/jest-dom)
+[Jest Mock functions](https://jestjs.io/docs/mock-functions)
 
 ## How to Get Started
 
