@@ -34,7 +34,7 @@ Love, The Aliens 💚
 
 ### Step 1 - Check out the sample project provided by the aliens
 
-If you've run the project already using `npm/yarn start` you'll have seen there's a form header, but no actual form.
+If you've run the project already using `npm start` you'll have seen there's a form header, but no actual form.
 
 Let's see if they've left us any tests.
 

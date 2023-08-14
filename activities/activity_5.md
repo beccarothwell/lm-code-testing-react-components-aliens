@@ -22,79 +22,55 @@ It's unclear how a species is supposed to make a case in just 17 characters, but
 
 🤔 Where is the best place to validate the data?
 
-Remember you're going to have to write tests for each component's validation messages, so ideally we'll include that logic in each component somehow.
+Each component receives a `value` prop. Whenever that value changes, we would like to validate that data.
 
----
+💡 Perhaps the neatest way would be for us to pass a validation function into each component:
 
-The smart place seems like our `onChange` handlers. We can intercept them and add the extra logic we need.
+```JSX
+// W12MForm.tsx
+import { validateSpeciesName } from './validate/validate_species_name';
 
-Let's start with a text input, e.g. `SpeciesName` or `PlanetName`. Up to now, each component probably includes something like this:
-
-```TSX
-<input type="text" value={someValueFromProps} onChange={someFunctionFromProps}/>
+// ... rest of form...
+<SpeciesName speciesName={speciesName} onChangeSpeciesName={(e) => setSpeciesName(e.target.value)} validate={validateSpeciesName} />
 ```
 
-But we can intercept that function to add extra logic and then call the original function
+Then in the component, we can add this extra line:
 
 ```TSX
-<input type="text" onChange={(e) => { /* extra logic goes here */ someFunctionFromProps(e); }}/>
-```
 
-Remember `e.target.value` contains the current value of the input, which we can validate here.
+	const SpeciesName : React.FC<SpeciesNameProps> = (props) => {
 
-One way to do this is to add a validation function in our component. In pseudocode this might look a bit like this:
-
-```TSX
-	const someComponent : React.FC<SomeComponentPropsInterface> = (props) => {
-
-		const [ errorMessage, setErrorMessage ] = useState<string | undefined>();
-
-		const validate = ???; // some validation function here
+		// 👇
+		const errorMessage = props.validate(props.value);
 
 		return(
 			// rest of component here
-			<input type="text" onChange={(e) => {
-				const errorMessage = validate(e.target.value);
-				setErrorMessage(errorMessage);
-				someFunctionFromProps(e);
-				}}/>
 			<ErrorMessage message={errorMessage} />
 		);
 
 		}
 ```
 
-👉 Take a moment to understand the pseudocode above before reading on.
+👉 Add an `<ErrorMessage/>` component inside each field. This should take `errorMessage` as a prop, and its job is to display the error IN RED if there's a message, or to display nothing if no errors.
 
-💡 In `onChange` we're still calling the handler passed to us from the form component to inform it about any updates. But before that we're calling some `validate` function (not yet defined) and setting an error message to whatever pops out.
+🤔 But wait! What if there's MORE THAN ONE error? It's possible for more than one rule to be broken at a time, right?!
 
-💡 We've set the type of `errorMessage` to be `string | undefined`. We could just use an empty string to signal "there's no errors" but why not get the type system to help us out? We can use `undefined` to mean "no errors", and get some practice with type unions in the process.
+💡 Maybe this would be better if we called it `errorMessages` and made it a `string[]` - then if the length of the array is 0 you'll know there's no errors. This way you can show multiple errors if there are any!
 
-👉 Add an `<ErrorMessage/>` component to each field. This should take `errorMessage` from the state as a prop (remember the type is `string | undefined`), and its job is to display it in red if there's a message, or to display nothing if not.
-
-👉 Now we need to write the `validate` function. It takes one parameter, which is a `string`, and returns a `string | undefined`, so it's going to look something like this:
+👉 You'll need to write the validation function:
 
 ```TSX
-// Take some time to understand this syntax...
-// note the type annotation of "(value: string) => string | undefined" - so TypeScript knows exactly what parameters and
-// return values to expect from our validation functions, making each of them easy to write!
-const validate : (value : string) => string | undefined = (value) => {
-	// validation code here - needs to return an error message, or 'undefined' if no errors
+// validate_species_name.ts
+const validateSpeciesName : (speciesName : string) => string[] = (speciesName) => {
+	// validation code here
+	// needs to return an array of error messages
+	// or an empty array if there aren't any
 };
-
-// NB here's a function without a type annotation, for comparison with the syntax above
-//    Note that TypeScript won't complain about not returning anything from this one, but it WILL complain if the above doesn't return. That's the advantage of telling TypeScript what we want our functions to return.
-const anotherFunction = (value) => {
-
-};
-
 ```
 
-👉 Use this pattern to add a `validate` function to each field using the rules the aliens gave us. 👾
+👉 Use this pattern to add a `validate` function as a prop to each field which uses the rules the aliens gave us. 👾
 
-👉 Each field should now display a red error message if invalid data is entered.
-
-😭 Getting lost? Check out [Activity 5 Hints](./activity_5_hints.md) for some extra help with one field which should get you going again.
+👉 Each field should now display red error message(s) if invalid data is entered.
 
 We're nearly done!
 

@@ -27,37 +27,23 @@ Remember how to pass props to a component in tests? Here's an example we looked 
 
 Your task now is to:
 
-👉 Add a test to each input component to test for NO error message when valid data is entered, i.e. when the value is set to something within the rules
+👉 Add some new tests which pass in mocks for your validation functions. Then, in each test, get the validation function to return something different. For example:
 
-👉 Add (multiple if necessary) tests to each input component to test that the right error message is shown for each type of rule break.
+```TypeScript
+const mockValidateSpeciesName = jest.fn()l
 
-Reminder of the validation rules:
-
--   **Species Name**: Must be between 3 and 23 characters. No numbers or special characters allowed!
-
--   **Planet Name**: Must be between 2 and 49 characters. Numbers are allowed, but no special characters.
-
--   **Number of beings**: Numbers ONLY. Must be at least 1,000,000,000.
-
--   **What is 2 + 2**: "4" must be selected. Selecting "Not 4" should display an error.
-
--   **Reason for sparing**: Must be between 17 and 153 characters.
-
-👉 Write all of your tests and check they work for the above rules!
-
-So, for example, there might be a test that passes correct props to Species Name:
-
-```TSX
-const validSpeciesName : SpeciesNameProps = { speciesName: 'Human', /* other props here*/ };
-	render(<SpeciesName {...validSpeciesName} />);
-		expect(
-    		screen.getByText('ERROR')
-    	).not.toBeInTheDocument();
+mockValidateSpeciesName.mockReturnValue([]); // this would return no errors for this test
+// OR
+mockValidateSpeciesName.mockReturnValue(["Must be between 3 and 23 characters"]); // return one error
 ```
 
-And if we write another test that passes `'iroejgioejgioregioergioerjgioregioregoejrgiorejgiorejgioegjierogejogio'` as a species name, we would `expect` an error message such as `ERROR - Species Name must be less than 23 characters` to be in the document.
+👉 Write tests which test that your components display the error messages that are returned from your validation functions.
 
-And so on...
+For example, a test which returns NO errors from your mock validation function, you'd expect there to be no error messages in the document.
+
+Then, in another test, a mock should return some error messages, and you expect those to be in the document.
+
+👉 Don't forget to write test files for your validation functions themselves - these are just normal TS functions so you can test them as normal. Files like `validate_species_name.test.ts` would be useful, right?!
 
 👉 Now if you run `npm test` you should get confirmation that all of your components are validating correctly in all possible circumstances.
 

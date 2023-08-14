@@ -26,7 +26,7 @@ As a refresher for inputs-with-state, for each input you'll need something like:
 
 🤔 QUESTION - where is the best place in our app to _store_ this state?
 
-Hint: It may seem at first as if each `<input>` field should store its own state... but think about the moment of submitting the form. At that point the whole form needs to know the state of each component so it can send the data to the server. It ends up being cleaner for the form component to be the place where 'form state' is stored.
+Hint: It may seem at first as if each `<input>` field should store its own state... but think about the moment of submitting the form. At that point the whole form needs to know the state of each component so it can send the data to the server. It often ends up being cleaner for the form component to be the place where 'form state' is stored.
 
 The general principle here is that all state should be stored at the "highest" place in the tree that needs to know about that state... but no higher. This is to prevent us from storing ALL our state in the `App` component - imagine how massive that component would get for a large project! But if we go too far the other way, with each tiny component managing its own state, it becomes very difficult to _combine_ that data together when we need to. The more experienced you get with React, the more it will become obvious where a given piece of state should be stored.
 
@@ -34,7 +34,7 @@ The general principle here is that all state should be stored at the "highest" p
 
 👉 Code a simple version of the form that stores each entered value in state
 
-😡 If you get frustrated, there are some extra [Activity 3 Hints](./activity_3_hints.md) to help you build the basic form
+😡 Don't forget to check out the extra [Activity 3 Hints](./activity_3_hints.md) to help you build the form.
 
 ## Step 2 - Add a submit button
 
