@@ -1,15 +1,32 @@
 import { ChangeEventHandler } from "react";
 
 interface ReasonForSparingProps {
+  label: string;
+  name: string;
+  id: string;
   value: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
 }
 
 const ReasonForSparing: React.FC<ReasonForSparingProps> = ({
+  label,
+  name,
+  id,
   value,
   onChange,
 }) => {
-  return <input type="text" value={value} onChange={onChange} />;
+  return (
+    <label>
+      {`${label}: `}
+      <input
+        type="text"
+        name={name}
+        id={id}
+        value={value}
+        onChange={onChange}
+      />
+    </label>
+  );
 };
 
 export default ReasonForSparing;

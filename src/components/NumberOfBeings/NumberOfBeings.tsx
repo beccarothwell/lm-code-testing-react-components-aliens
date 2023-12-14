@@ -1,6 +1,6 @@
 import { ChangeEventHandler } from "react";
 
-interface SpeciesNameProps {
+interface NumberOfBeingsProps {
   label: string;
   name: string;
   id: string;
@@ -8,7 +8,7 @@ interface SpeciesNameProps {
   onChange: ChangeEventHandler<HTMLInputElement>;
 }
 
-const SpeciesName: React.FC<SpeciesNameProps> = ({
+const NumberOfBeings: React.FC<NumberOfBeingsProps> = ({
   label,
   name,
   id,
@@ -29,4 +29,4 @@ const SpeciesName: React.FC<SpeciesNameProps> = ({
   );
 };
 
-export default SpeciesName;
+export default NumberOfBeings;
