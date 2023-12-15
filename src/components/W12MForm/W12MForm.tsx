@@ -1,25 +1,38 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, MouseEvent, useState } from "react";
 import W12MHeader from "../W12MHeader/W12MHeader";
 import SpeciesName from "../SpeciesName/SpeciesName";
 import PlanetName from "../PlanetName/PlanetName";
 import NumberOfBeings from "../NumberOfBeings/NumberOfBeings";
 import SelectInput from "../SelectInput/SelectInput";
 import ReasonForSparing from "../ReasonForSparing/ReasonsForSparing";
-
-interface inputData {
-  speciesName: string;
-  planetName: string;
-  numberOfBeings: string;
-  mathChallenge: string;
-  reasonForSparing: string;
-}
+import { W12MInputData } from "./W12Form.types";
 
 const DEFAULT_INPUT_DATA = {
-  speciesName: "",
-  planetName: "",
-  numberOfBeings: "",
-  mathChallenge: "",
-  reasonForSparing: "",
+  speciesName: {
+    label: "Species Name",
+    id: "speciesName",
+    value: "",
+  },
+  planetName: {
+    label: "Planet Name",
+    id: "planetName",
+    value: "",
+  },
+  numberOfBeings: {
+    label: "Number of Beings",
+    id: "numberOfBeings",
+    value: "",
+  },
+  mathChallenge: {
+    label: "What is 2 + 2",
+    id: "mathChallenge",
+    value: "",
+  },
+  reasonForSparing: {
+    label: "Reason for Sparing",
+    id: "reasonForSparing",
+    value: "",
+  },
 };
 
 const MATH_CHALLENGE_OPTIONS = [
@@ -33,8 +46,12 @@ const MATH_CHALLENGE_OPTIONS = [
   },
 ];
 
-const W12MForm = () => {
-  const [inputData, setInputData] = useState<inputData>(DEFAULT_INPUT_DATA);
+interface W12MFormProps {
+  updateSubmittedData: (newSubmission: W12MInputData) => void;
+}
+
+const W12MForm: React.FC<W12MFormProps> = ({ updateSubmittedData }) => {
+  const [inputData, setInputData] = useState<W12MInputData>(DEFAULT_INPUT_DATA);
 
   function handleChange(
     event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
@@ -42,50 +59,68 @@ const W12MForm = () => {
     setInputData((currentData) => {
       return {
         ...currentData,
-        [event.target.id]: event.target.value,
+        [event.target.id]: {
+          ...currentData[event.target.id as keyof W12MInputData],
+          value: event.target.value,
+        },
       };
     });
   }
+
+  function handleSubmit(e: MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    updateSubmittedData(inputData);
+    console.log(inputData);
+  }
+
+  const {
+    speciesName,
+    planetName,
+    numberOfBeings,
+    mathChallenge,
+    reasonForSparing,
+  } = inputData;
 
   return (
     <section className="w12MForm">
       <W12MHeader />
       <form>
         <SpeciesName
-          label={"Species Name"}
-          name={"speciesName"}
-          id={"speciesName"}
-          value={inputData.speciesName}
+          label={speciesName.label}
+          name={speciesName.id}
+          id={speciesName.id}
+          value={speciesName.value}
           onChange={handleChange}
         />
         <PlanetName
-          label={"Planet Name"}
-          name={"planetName"}
-          id={"planetName"}
-          value={inputData.planetName}
+          label={planetName.label}
+          name={planetName.id}
+          id={planetName.id}
+          value={planetName.value}
           onChange={handleChange}
         />
         <NumberOfBeings
-          label={"Number of Beings"}
-          name={"numberOfBeings"}
-          id={"numberOfBeings"}
-          value={inputData.numberOfBeings}
+          label={numberOfBeings.label}
+          name={numberOfBeings.id}
+          id={numberOfBeings.id}
+          value={numberOfBeings.value}
           onChange={handleChange}
         />
         <SelectInput
-          label={"What is 2 + 2"}
-          name={"mathChallenge"}
-          id={"mathChallenge"}
+          label={mathChallenge.label}
+          name={mathChallenge.id}
+          id={mathChallenge.id}
           options={MATH_CHALLENGE_OPTIONS}
           onChange={handleChange}
         />
         <ReasonForSparing
-          label={"Reason for Sparing"}
-          name={"reasonForSparing"}
-          id={"reasonForSparing"}
-          value={inputData.reasonForSparing}
+          label={reasonForSparing.label}
+          name={reasonForSparing.id}
+          id={reasonForSparing.id}
+          value={reasonForSparing.value}
           onChange={handleChange}
         />
+        <button onClick={handleSubmit}>Submit</button>
       </form>
     </section>
   );
