@@ -10,7 +10,7 @@ interface SelectInputProps {
   name: string;
   id: string;
   options: Array<SelectOption>;
-  onChange: ChangeEventHandler<HTMLSelectElement>;
+  onChange: (id: string, value: string) => void;
 }
 
 const SelectInput: React.FC<SelectInputProps> = ({
@@ -23,7 +23,11 @@ const SelectInput: React.FC<SelectInputProps> = ({
   return (
     <label>
       {label && `${label}: `}
-      <select name={name} id={id} onChange={onChange}>
+      <select
+        name={name}
+        id={id}
+        onChange={(e) => onChange(e.target.id, e.target.value)}
+      >
         <option value="">--Please choose an option--</option>
         {options.map((option, i) => (
           <option key={i} value={option.value}>

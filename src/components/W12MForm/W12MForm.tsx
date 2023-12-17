@@ -53,15 +53,13 @@ interface W12MFormProps {
 const W12MForm: React.FC<W12MFormProps> = ({ updateSubmittedData }) => {
   const [inputData, setInputData] = useState<W12MInputData>(DEFAULT_INPUT_DATA);
 
-  function handleChange(
-    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
-  ) {
+  function handleChange(id: string, value: string) {
     setInputData((currentData) => {
       return {
         ...currentData,
-        [event.target.id]: {
-          ...currentData[event.target.id as keyof W12MInputData],
-          value: event.target.value,
+        [id]: {
+          ...currentData[id as keyof W12MInputData],
+          value: value,
         },
       };
     });
