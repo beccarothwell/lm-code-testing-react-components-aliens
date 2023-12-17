@@ -5,7 +5,7 @@ interface SpeciesNameProps {
   name: string;
   id: string;
   value: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
+  onChange: (id: string, value: string) => void;
 }
 
 const SpeciesName: React.FC<SpeciesNameProps> = ({
@@ -23,7 +23,7 @@ const SpeciesName: React.FC<SpeciesNameProps> = ({
         name={name}
         id={id}
         value={value}
-        onChange={onChange}
+        onChange={(e) => onChange(e.target.id, e.target.value)}
       />
     </label>
   );

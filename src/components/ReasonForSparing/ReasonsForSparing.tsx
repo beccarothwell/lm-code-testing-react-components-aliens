@@ -5,7 +5,7 @@ interface ReasonForSparingProps {
   name: string;
   id: string;
   value: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
+  onChange: (id: string, value: string) => void;
 }
 
 const ReasonForSparing: React.FC<ReasonForSparingProps> = ({
@@ -23,7 +23,7 @@ const ReasonForSparing: React.FC<ReasonForSparingProps> = ({
         name={name}
         id={id}
         value={value}
-        onChange={onChange}
+        onChange={(e) => onChange(e.target.id, e.target.value)}
       />
     </label>
   );

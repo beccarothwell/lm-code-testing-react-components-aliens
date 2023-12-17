@@ -1,11 +1,9 @@
-import { ChangeEventHandler } from "react";
-
 interface NumberOfBeingsProps {
   label: string;
   name: string;
   id: string;
   value: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
+  onChange: (id: string, value: string) => void;
 }
 
 const NumberOfBeings: React.FC<NumberOfBeingsProps> = ({
@@ -23,7 +21,7 @@ const NumberOfBeings: React.FC<NumberOfBeingsProps> = ({
         name={name}
         id={id}
         value={value}
-        onChange={onChange}
+        onChange={(e) => onChange(e.target.id, e.target.value)}
       />
     </label>
   );
