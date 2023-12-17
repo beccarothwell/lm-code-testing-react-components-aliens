@@ -19,7 +19,7 @@ const ReasonForSparing: React.FC<ReasonForSparingProps> = ({
     <label>
       {`${label}: `}
       <input
-        type="text"
+        type="textarea"
         name={name}
         id={id}
         value={value}

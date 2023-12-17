@@ -17,7 +17,7 @@ const NumberOfBeings: React.FC<NumberOfBeingsProps> = ({
 }) => {
   return (
     <label>
-      {`${label}: `}
+      {label && `${label}: `}
       <input
         type="text"
         name={name}
