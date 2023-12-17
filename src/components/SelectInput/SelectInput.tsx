@@ -22,11 +22,13 @@ const SelectInput: React.FC<SelectInputProps> = ({
 }) => {
   return (
     <label>
-      {`${label}: `}
+      {label && `${label}: `}
       <select name={name} id={id} onChange={onChange}>
         <option value="">--Please choose an option--</option>
-        {options.map((option) => (
-          <option value={option.value}>{option.text}</option>
+        {options.map((option, i) => (
+          <option key={i} value={option.value}>
+            {option.text}
+          </option>
         ))}
       </select>
     </label>

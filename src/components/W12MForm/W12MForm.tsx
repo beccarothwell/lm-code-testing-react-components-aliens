@@ -70,7 +70,6 @@ const W12MForm: React.FC<W12MFormProps> = ({ updateSubmittedData }) => {
   function handleSubmit(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     updateSubmittedData(inputData);
-    console.log(inputData);
   }
 
   const {
@@ -84,7 +83,7 @@ const W12MForm: React.FC<W12MFormProps> = ({ updateSubmittedData }) => {
   return (
     <section className="w12MForm">
       <W12MHeader />
-      <form>
+      <form name="W12M">
         <SpeciesName
           label={speciesName.label}
           name={speciesName.id}
