@@ -28,7 +28,7 @@ const SpeciesName: React.FC<SpeciesNameProps> = ({
         value={value}
         onChange={(e) => onChange(e.target.id, e.target.value)}
       />
-      <ErrorMessage messages={errorMessages} />
+      {errorMessages.length > 0 && <ErrorMessage messages={errorMessages} />}
     </label>
   );
 };

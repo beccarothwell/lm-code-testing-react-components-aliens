@@ -9,8 +9,8 @@ const W12MSubmission: React.FC<W12MSubmissionProps> = ({ submittedData }) => {
   return (
     <section className="w12MSubmission">
       <h2>Information Submitted:</h2>
-      {Object.values(submittedData).map((item) => (
-        <p>{`${item.label}: ${item.value}`}</p>
+      {Object.values(submittedData).map((item, i) => (
+        <p key={i}>{`${item.label}: ${item.value}`}</p>
       ))}
     </section>
   );
