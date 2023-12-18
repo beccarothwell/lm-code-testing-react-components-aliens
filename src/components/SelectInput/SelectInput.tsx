@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from "react";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 interface SelectOption {
   value: string;
@@ -10,7 +10,9 @@ interface SelectInputProps {
   name: string;
   id: string;
   options: Array<SelectOption>;
+  value: string;
   onChange: (id: string, value: string) => void;
+  validate: (value: string) => string[];
 }
 
 const SelectInput: React.FC<SelectInputProps> = ({
@@ -18,8 +20,11 @@ const SelectInput: React.FC<SelectInputProps> = ({
   name,
   id,
   options,
+  value,
   onChange,
+  validate,
 }) => {
+  const errorMessages = validate(value);
   return (
     <label>
       {label && `${label}: `}
@@ -35,6 +40,7 @@ const SelectInput: React.FC<SelectInputProps> = ({
           </option>
         ))}
       </select>
+      <ErrorMessage messages={errorMessages} />
     </label>
   );
 };

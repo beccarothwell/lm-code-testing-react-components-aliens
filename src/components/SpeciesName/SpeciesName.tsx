@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from "react";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 interface SpeciesNameProps {
   label: string;
@@ -6,6 +6,7 @@ interface SpeciesNameProps {
   id: string;
   value: string;
   onChange: (id: string, value: string) => void;
+  validate: (value: string) => string[];
 }
 
 const SpeciesName: React.FC<SpeciesNameProps> = ({
@@ -14,7 +15,9 @@ const SpeciesName: React.FC<SpeciesNameProps> = ({
   id,
   value,
   onChange,
+  validate,
 }) => {
+  const errorMessages = validate(value);
   return (
     <label>
       {`${label}: `}
@@ -25,6 +28,7 @@ const SpeciesName: React.FC<SpeciesNameProps> = ({
         value={value}
         onChange={(e) => onChange(e.target.id, e.target.value)}
       />
+      <ErrorMessage messages={errorMessages} />
     </label>
   );
 };

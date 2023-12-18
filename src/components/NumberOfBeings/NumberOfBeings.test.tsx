@@ -9,6 +9,7 @@ test("Given the required props, When the component is rendered, Then there shoul
     id: "",
     value: "",
     onChange: () => {},
+    validate: () => [],
   };
 
   render(<NumberofBeings {...props} />);
@@ -27,6 +28,7 @@ test("Given the required props, When the component is rendered, Then there shoul
     id: "",
     value: "",
     onChange: () => {},
+    validate: () => [],
   };
 
   const { container } = render(<NumberofBeings {...props} />);
@@ -42,6 +44,7 @@ test("Given the required props, When the component is rendered, Then the input e
     id: "",
     value: "",
     onChange: () => {},
+    validate: () => [],
   };
 
   const { container } = render(<NumberofBeings {...props} />);
@@ -61,6 +64,7 @@ test("Given the required props, When the component is rendered, Then the label t
     id: "",
     value: "",
     onChange: () => {},
+    validate: () => [],
   };
 
   render(<NumberofBeings {...props} />);
@@ -76,6 +80,7 @@ test("Given the required props, When the component is rendered, Then the input v
     id: "",
     value: "test",
     onChange: () => {},
+    validate: () => [],
   };
 
   render(<NumberofBeings {...props} />);
@@ -95,6 +100,7 @@ test("Given the component is rendered, When the user types in the input, Then th
     id: "",
     value: "",
     onChange: mockOnChange,
+    validate: () => [],
   };
 
   render(<NumberofBeings {...props} />);
