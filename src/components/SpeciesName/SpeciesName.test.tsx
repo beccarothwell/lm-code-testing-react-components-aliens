@@ -112,3 +112,81 @@ test("Given the component is rendered, When the user types in the input, Then th
   expect(mockOnChange).toBeCalled();
   expect(mockOnChange).toBeCalledTimes(4);
 });
+
+test("Given the required props, When the component is rendered and there are no errors, Then the validate function should be called and no error messages should be present", async () => {
+  const mockValidate = jest.fn();
+  mockValidate.mockReturnValue([]);
+
+  const props = {
+    label: "",
+    name: "",
+    id: "",
+    value: "",
+    onChange: () => {},
+    validate: mockValidate,
+  };
+
+  render(<SpeciesName {...props} />);
+
+  const errorMessage1 = screen.queryByText(
+    "Must be between 3 and 23 characters."
+  );
+  const errorMessage2 = screen.queryByText(
+    "No numbers or special characters allowed!"
+  );
+
+  expect(mockValidate).toBeCalled();
+  expect(errorMessage1).not.toBeInTheDocument();
+  expect(errorMessage2).not.toBeInTheDocument();
+});
+
+test("Given the required props, When the component is rendered and there is one error, Then the validate function should be called and the error message should be present", async () => {
+  const mockValidate = jest.fn();
+  mockValidate.mockReturnValue(["Must be between 3 and 23 characters."]);
+
+  const props = {
+    label: "",
+    name: "",
+    id: "",
+    value: "",
+    onChange: () => {},
+    validate: mockValidate,
+  };
+
+  render(<SpeciesName {...props} />);
+
+  const errorMessage = screen.getByText("Must be between 3 and 23 characters.");
+
+  expect(mockValidate).toBeCalled();
+  expect(errorMessage).toBeInTheDocument();
+});
+
+test("Given the required props, When the component is rendered and there is more than one error, Then the validate function should be called and all the error message should be present", async () => {
+  const mockValidate = jest.fn();
+  mockValidate.mockReturnValue([
+    "Must be between 3 and 23 characters.",
+    "No numbers or special characters allowed!",
+  ]);
+
+  const props = {
+    label: "",
+    name: "",
+    id: "",
+    value: "",
+    onChange: () => {},
+    validate: mockValidate,
+  };
+
+  render(<SpeciesName {...props} />);
+
+  const errorMessage1 = screen.getByText(
+    "Must be between 3 and 23 characters."
+  );
+  const errorMessage2 = screen.getByText(
+    "No numbers or special characters allowed!"
+  );
+
+  expect(mockValidate).toBeCalled();
+  expect(errorMessage1).toBeInTheDocument();
+  expect(errorMessage2).toBeInTheDocument();
+});

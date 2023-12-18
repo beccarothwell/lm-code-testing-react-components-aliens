@@ -148,3 +148,75 @@ test("Given the component is rendered, When the user selects an option, Then the
     screen.queryByRole("option", { name: "B", selected: true })
   ).not.toBeInTheDocument();
 });
+
+test("Given the required props, When the component is rendered and there are no errors, Then the validate function should be called and no error messages should be present", async () => {
+  const mockValidate = jest.fn();
+  mockValidate.mockReturnValue([]);
+
+  const props = {
+    label: "",
+    name: "",
+    id: "",
+    options: [],
+    value: "",
+    onChange: () => {},
+    validate: mockValidate,
+  };
+
+  render(<SelectInput {...props} />);
+
+  const errorMessage1 = screen.queryByText("Incorrect. 2 + 2 = 4.");
+  const errorMessage2 = screen.queryByText(
+    "There were only two options. How have you selected something else?"
+  );
+
+  expect(mockValidate).toBeCalled();
+  expect(errorMessage1).not.toBeInTheDocument();
+  expect(errorMessage2).not.toBeInTheDocument();
+});
+
+test("Given the required props, When the component is rendered and there is one error, Then the validate function should be called and the error message should be present", async () => {
+  const mockValidate = jest.fn();
+  mockValidate.mockReturnValue(["Incorrect. 2 + 2 = 4."]);
+
+  const props = {
+    label: "",
+    name: "",
+    id: "",
+    options: [],
+    value: "",
+    onChange: () => {},
+    validate: mockValidate,
+  };
+
+  render(<SelectInput {...props} />);
+
+  const errorMessage = screen.getByText("Incorrect. 2 + 2 = 4.");
+
+  expect(mockValidate).toBeCalled();
+  expect(errorMessage).toBeInTheDocument();
+});
+
+test("Given the required props, When the component is rendered and there is more than one error, Then the validate function should be called and all the error message should be present", async () => {
+  const mockValidate = jest.fn();
+  mockValidate.mockReturnValue(["Incorrect. 2 + 2 = 4.", "Some other error"]);
+
+  const props = {
+    label: "",
+    name: "",
+    id: "",
+    options: [],
+    value: "",
+    onChange: () => {},
+    validate: mockValidate,
+  };
+
+  render(<SelectInput {...props} />);
+
+  const errorMessage1 = screen.getByText("Incorrect. 2 + 2 = 4.");
+  const errorMessage2 = screen.getByText("Some other error");
+
+  expect(mockValidate).toBeCalled();
+  expect(errorMessage1).toBeInTheDocument();
+  expect(errorMessage2).toBeInTheDocument();
+});
