@@ -5,8 +5,10 @@ interface ErrorMessageProps {
 const ErrorMessage: React.FC<ErrorMessageProps> = ({ messages }) => {
   return (
     <>
-      {messages.map((message) => (
-        <span className="error">{message}</span>
+      {messages.map((message, i) => (
+        <span key={i} className="error">
+          {message}
+        </span>
       ))}
     </>
   );

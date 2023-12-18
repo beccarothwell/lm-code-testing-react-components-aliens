@@ -40,7 +40,7 @@ const SelectInput: React.FC<SelectInputProps> = ({
           </option>
         ))}
       </select>
-      <ErrorMessage messages={errorMessages} />
+      {errorMessages.length > 0 && <ErrorMessage messages={errorMessages} />}
     </label>
   );
 };
