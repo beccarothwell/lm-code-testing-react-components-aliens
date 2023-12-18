@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEvent, useState } from "react";
+import { MouseEvent, useState } from "react";
 import W12MHeader from "../W12MHeader/W12MHeader";
 import SpeciesName from "../SpeciesName/SpeciesName";
 import PlanetName from "../PlanetName/PlanetName";
@@ -6,6 +6,11 @@ import NumberOfBeings from "../NumberOfBeings/NumberOfBeings";
 import SelectInput from "../SelectInput/SelectInput";
 import ReasonForSparing from "../ReasonForSparing/ReasonsForSparing";
 import { W12MInputData } from "./W12Form.types";
+import validateSpeciesName from "../../validate/SpeciesName/validate_species_name";
+import validatePlanetName from "../../validate/PlanetName/validate_planet_name";
+import validateNumberOfBeings from "../../validate/NumberOfBeings/validate_number_of_beings";
+import validateMathChallenge from "../../validate/MathChallenge/validate_math_challenge";
+import validateReasonsForSparing from "../../validate/ReasonsForSparing/validate_reasons_for_sparing";
 
 const DEFAULT_INPUT_DATA = {
   speciesName: {
@@ -88,6 +93,7 @@ const W12MForm: React.FC<W12MFormProps> = ({ updateSubmittedData }) => {
           id={speciesName.id}
           value={speciesName.value}
           onChange={handleChange}
+          validate={validateSpeciesName}
         />
         <PlanetName
           label={planetName.label}
@@ -95,6 +101,7 @@ const W12MForm: React.FC<W12MFormProps> = ({ updateSubmittedData }) => {
           id={planetName.id}
           value={planetName.value}
           onChange={handleChange}
+          validate={validatePlanetName}
         />
         <NumberOfBeings
           label={numberOfBeings.label}
@@ -102,13 +109,16 @@ const W12MForm: React.FC<W12MFormProps> = ({ updateSubmittedData }) => {
           id={numberOfBeings.id}
           value={numberOfBeings.value}
           onChange={handleChange}
+          validate={validateNumberOfBeings}
         />
         <SelectInput
           label={mathChallenge.label}
           name={mathChallenge.id}
           id={mathChallenge.id}
           options={MATH_CHALLENGE_OPTIONS}
+          value={mathChallenge.value}
           onChange={handleChange}
+          validate={validateMathChallenge}
         />
         <ReasonForSparing
           label={reasonForSparing.label}
@@ -116,6 +126,7 @@ const W12MForm: React.FC<W12MFormProps> = ({ updateSubmittedData }) => {
           id={reasonForSparing.id}
           value={reasonForSparing.value}
           onChange={handleChange}
+          validate={validateReasonsForSparing}
         />
         <button onClick={handleSubmit}>Submit</button>
       </form>

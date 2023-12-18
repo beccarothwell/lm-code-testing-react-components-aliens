@@ -8,7 +8,9 @@ test("Given the required props, When the component is rendered, Then there shoul
     name: "",
     id: "",
     options: [],
+    value: "",
     onChange: () => {},
+    validate: () => [],
   };
   render(<SelectInput {...props} />);
 
@@ -24,7 +26,9 @@ test("Given the required props, When the component is rendered, Then there shoul
     name: "",
     id: "",
     options: [],
+    value: "",
     onChange: () => {},
+    validate: () => [],
   };
   const { container } = render(<SelectInput {...props} />);
 
@@ -38,7 +42,9 @@ test("Given the required props, When the component is rendered, Then the input e
     name: "",
     id: "",
     options: [],
+    value: "",
     onChange: () => {},
+    validate: () => [],
   };
   const { container } = render(<SelectInput {...props} />);
 
@@ -56,7 +62,9 @@ test("Given the required props, When the component is rendered, Then the label t
     name: "",
     id: "",
     options: [],
+    value: "",
     onChange: () => {},
+    validate: () => [],
   };
   render(<SelectInput {...props} />);
 
@@ -79,7 +87,9 @@ test("Given the required props, When the component is rendered, Then the provide
         text: "B",
       },
     ],
+    value: "",
     onChange: () => {},
+    validate: () => [],
   };
   render(<SelectInput {...props} />);
 
@@ -113,7 +123,9 @@ test("Given the component is rendered, When the user selects an option, Then the
         text: "B",
       },
     ],
+    value: "",
     onChange: mockOnChange,
+    validate: () => [],
   };
 
   render(<SelectInput {...props} />);
