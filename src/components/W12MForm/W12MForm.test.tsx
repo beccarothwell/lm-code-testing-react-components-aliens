@@ -28,13 +28,13 @@ test("Given the required props, When the component renders, Then the form should
   expect(someForm).toBeInTheDocument();
 });
 
-test("Given the component is rendered, When the user clicks submit, Then the onClick function is called", async () => {
+test("Given the component is rendered, When the user clicks submit, Then the form onSubmit function is called", async () => {
   const user = userEvent.setup();
 
-  const mockOnClick = jest.fn();
+  const mockOnSubmit = jest.fn();
 
   const props = {
-    updateSubmittedData: mockOnClick,
+    updateSubmittedData: mockOnSubmit,
   };
 
   render(<W12MForm {...props} />);
@@ -43,5 +43,23 @@ test("Given the component is rendered, When the user clicks submit, Then the onC
 
   await user.click(someButton);
 
-  expect(mockOnClick).toBeCalled();
+  expect(mockOnSubmit).toBeCalled();
+});
+
+test("Given the component is rendered, When the user presses enter, Then the form onSubmit function is called", async () => {
+  const user = userEvent.setup();
+
+  const mockOnSubmit = jest.fn();
+
+  const props = {
+    updateSubmittedData: mockOnSubmit,
+  };
+
+  render(<W12MForm {...props} />);
+
+  //const someButton = screen.getByRole("button");
+
+  await user.keyboard("{Enter}");
+
+  expect(mockOnSubmit).toBeCalled();
 });
