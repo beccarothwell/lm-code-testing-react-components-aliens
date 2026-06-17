@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from "react";
+import { FormEvent, MouseEvent, useState } from "react";
 import W12MHeader from "../W12MHeader/W12MHeader";
 import SpeciesName from "../SpeciesName/SpeciesName";
 import PlanetName from "../PlanetName/PlanetName";
@@ -70,7 +70,7 @@ const W12MForm: React.FC<W12MFormProps> = ({ updateSubmittedData }) => {
     });
   }
 
-  function handleSubmit(e: MouseEvent<HTMLButtonElement>) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
     updateSubmittedData(inputData);
   }
@@ -86,7 +86,7 @@ const W12MForm: React.FC<W12MFormProps> = ({ updateSubmittedData }) => {
   return (
     <section className="w12MForm">
       <W12MHeader />
-      <form name="W12M">
+      <form name="W12M" onSubmit={handleSubmit}>
         <SpeciesName
           label={speciesName.label}
           name={speciesName.id}
@@ -128,7 +128,7 @@ const W12MForm: React.FC<W12MFormProps> = ({ updateSubmittedData }) => {
           onChange={handleChange}
           validate={validateReasonsForSparing}
         />
-        <button onClick={handleSubmit}>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </section>
   );
